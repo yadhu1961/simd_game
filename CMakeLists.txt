@@ -11,21 +11,24 @@ project(SIMD_GAME
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
-add_executable(mat_mul mat_mul.c)
+add_executable(mat_mul ${CMAKE_SOURCE_DIR}/simd_matrix_ops/mat_mul.c)
 
-add_executable(simd_matrix_mul simd_matrix_mul.c)
+add_executable(simd_matrix_mul ${CMAKE_SOURCE_DIR}/simd_matrix_ops/simd_matrix_mul.c)
 
-add_executable(crc_cal crc_cal.c)
+add_executable(crc_cal ${CMAKE_SOURCE_DIR}/crc_calc/crc_cal.c)
 
+add_executable(convolution ${CMAKE_SOURCE_DIR}/convolution/convolution.c)
+
+add_executable(reverse_bits ${CMAKE_SOURCE_DIR}/reverse_bits/reverse_bits.c)
+
+add_executable(checksum ${CMAKE_SOURCE_DIR}/checksum/checksum.c)
+
+target_compile_options(mat_mul PRIVATE -std=c11 -Wall -Wextra -Wpedantic -g)
+target_compile_options(simd_matrix_mul PRIVATE -std=c11 -Wall -Wextra -Wpedantic -g -march=native -mavx2)
 target_compile_options(crc_cal PRIVATE -std=c11 -Wall -Wextra -Wpedantic -g)
-
-# add_custom_command(
-#     TARGET stack_driver_test
-#     POST_BUILD
-#     COMMAND ${CMAKE_SOURCE_DIR}/bin/stack_driver_test
-#     DEPENDS stack_driver_test
-#     COMMENT "Running Stack example implementation test"
-# )
+target_compile_options(convolution PRIVATE -std=c11 -Wall -Wextra -Wpedantic -g)
+target_compile_options(reverse_bits PRIVATE -std=c11 -Wall -Wextra -Wpedantic -g)
+target_compile_options(checksum PRIVATE -std=c11 -Wall -Wextra -Wpedantic -g)
 
 
 
