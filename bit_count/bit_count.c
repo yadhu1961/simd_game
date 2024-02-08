@@ -21,12 +21,25 @@ uint8_t countBits(uint64_t data)
     return bitCounter;
 }
 
+uint8_t countBits_BK(uint64_t input)
+{
+    uint8_t bitCounter = 0;
+    while (input > 0)
+    {
+        input &= (input - 1);
+        ++bitCounter;
+    }
+    return bitCounter;
+}
+
 int main()
 {
-    printf("bitcount(%d)\n", bitCount(0xFFFF));
-    printf("countBits(%d)\n", countBits(0xFFFF));
+    printf("bitcount        (%d)\n", bitCount(0xFFFF));
+    printf("countBits       (%d)\n", countBits(0xFFFF));
+    printf("countBits_Bk    (%d)\n", countBits_BK(0xFFFF));
 
-    printf("bitcount(%d)\n", bitCount(0x9));
-    printf("countBits(%d)\n", countBits(0x9));
+    printf("bitcount        (%d)\n", bitCount(0x9));
+    printf("countBits       (%d)\n", countBits(0x9));
+    printf("countBits_BK    (%d)\n", countBits_BK(0x9));
     return 0;
 }
