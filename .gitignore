@@ -4,3 +4,5 @@
 CMakeFiles/*
 *cmake
 CMakeCache.txt
+.vscode
+build/
