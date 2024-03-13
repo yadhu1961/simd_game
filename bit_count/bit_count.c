@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 uint8_t bitCount(uint64_t data)
 {
@@ -32,14 +33,25 @@ uint8_t countBits_BK(uint64_t input)
     return bitCounter;
 }
 
+/**
+ * Accepts 64-bit integer and returns 0 if it is even parity
+ * one if the number is of odd parity.
+ */
+bool parityCalc(uint64_t input)
+{
+    return countBits(input) & 0x01;
+}
+
 int main()
 {
     printf("bitcount        (%d)\n", bitCount(0xFFFF));
     printf("countBits       (%d)\n", countBits(0xFFFF));
     printf("countBits_Bk    (%d)\n", countBits_BK(0xFFFF));
+    printf("parityCalc      (%d)\n", parityCalc(0xFFFF));
 
     printf("bitcount        (%d)\n", bitCount(0x9));
     printf("countBits       (%d)\n", countBits(0x9));
     printf("countBits_BK    (%d)\n", countBits_BK(0x9));
+    printf("parityCalc      (%d)\n", parityCalc(0x4));
     return 0;
 }
