@@ -26,6 +26,17 @@ uint8_t swap_bits(uint8_t input, uint8_t pos1, uint8_t pos2)
     return input;
 }
 
+// swap bits in even position with odd position with constant time i.e O(1)
+uint32_t swap_even_odd_bits(uint32_t input)
+{
+    // Swap bits in even position with odd position
+    // 0101 ==> 0000 ==> 0000
+    // 0101 & 0x5 ==>
+    // 0101 ==> 0010
+
+    return (input & 0xAAAAAAAA) >> 1 | (input & 0x55555555) << 1;
+}
+
 void print(uint8_t input)
 {
     printf(BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(input));
