@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #define EXP 2.718f
-#define PI 3.1459f
+#define PI M_PI
 #define FFT_SIZE 8
 
 void dtft(const float signal[], const uint32_t N, float complex output[])
@@ -31,7 +31,7 @@ void printComplexArray(float complex output[], uint32_t len)
     printf("\n");
 }
 
-int main()
+int main(void)
 {
     float signal[] = {-1, 1, 2, 1, 4, -2, 6, -8};
     float complex output[] = {0, 0, 0, 0, 0, 0, 0, 0};
